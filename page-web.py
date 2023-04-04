@@ -34,7 +34,7 @@ st.markdown(f"<style>{CSS}</style>", unsafe_allow_html=True)
 
 
 # Définir le titre et la sous-titre de la page
-st.markdown("## *Estimez le temps de votre prochain trail !*")
+st.title("Estimez le temps de votre prochain trail !")
 
 # Diviser l'écran en deux colonnes
 col1, col2 = st.columns(2)
@@ -53,7 +53,8 @@ with col1:
             'gender': gender
         }
 
-        url = "http://localhost:8000/prediction"
+        url = st.secrets.get('url_live','http://localhost:8000')
+        url = f'{url}/prediction'
         results_dict = requests.get(url=url, params=params).json()
 
         #st.markdown("**Résultats de la prédiction :**")

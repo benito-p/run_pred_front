@@ -1,7 +1,7 @@
 import streamlit as st
 import datetime
 from PIL import Image
-
+import requests
 
 
 
@@ -20,8 +20,9 @@ h1 {
 st.markdown(f"<style>{CSS}</style>", unsafe_allow_html=True)
 
 
+
 # Définir le titre et la sous-titre de la page
-st.title("Estimez le temps de votre prochain trail !")
+st.markdown("## *Estimez le temps de votre prochain trail !*")
 
 # Diviser l'écran en deux colonnes
 col1, col2 = st.columns(2)
@@ -96,14 +97,12 @@ with col2:
         st.write("Benoit")
 
 
-
-st.sidebar.title("Options de séance")
+st.sidebar.title("Options de course")
 
 # Créer les champs de saisie pour les informations de la séance de trail
-distance = st.sidebar.slider("Distance (en mètres)", min_value=0, max_value=45000, value=10000, step=100)
-elevation_gain = st.sidebar.slider("Dénivelé (en mètres)", min_value=0, max_value=1000, value=200, step=10)
-average_heart_rate = st.sidebar.slider("Fréquence cardiaque moyenne", min_value=100, max_value=200, value=150, step=1)
-
+distance = st.sidebar.slider("Distance (km)", min_value=0.0, max_value=45.0, value=10.0, step=0.1)
+elevation_gain = st.sidebar.slider("Dénivelé positif total (m)", min_value=0, max_value=2000, value=200, step=10)
+average_heart_rate = st.sidebar.slider("Fréquence cardiaque moyenne (bpm)", min_value=100, max_value=200, value=150, step=1)
 gender = st.sidebar.selectbox("Genre", options=["M", "F"])
 
 

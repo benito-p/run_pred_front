@@ -14,7 +14,7 @@ st.sidebar.title("Options de course")
 
 # Créer les champs de saisie pour les informations de la séance de trail
 distance = st.sidebar.slider("Distance (km)", min_value=0.0, max_value=45.0, value=10.0, step=0.1)
-elevation_gain = st.sidebar.slider("Dénivelé positif total (m)", min_value=0, max_value=1000, value=200, step=10)
+elevation_gain = st.sidebar.slider("Dénivelé positif total (m)", min_value=0, max_value=2000, value=200, step=10)
 average_heart_rate = st.sidebar.slider("Fréquence cardiaque moyenne (bpm)", min_value=100, max_value=200, value=150, step=1)
 gender = st.sidebar.selectbox("Genre", options=["M", "F"])
 

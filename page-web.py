@@ -8,6 +8,18 @@ import requests
 # Définit la configuration de la page avec l'image en fond d'écran
 st.set_page_config(page_title='Trail Predictor', page_icon='🏃‍♂️🏃‍♀️', layout='wide')
 
+st.sidebar.title("Options de course")
+
+# Créer les champs de saisie pour les informations de la séance de trail
+distance = st.sidebar.slider("Distance (km)", min_value=0.0, max_value=45.0, value=10.0, step=0.1)
+elevation_gain = st.sidebar.slider("Dénivelé positif total (m)", min_value=0, max_value=2000, value=200, step=10)
+average_heart_rate = st.sidebar.slider("Fréquence cardiaque moyenne (bpm)", min_value=100, max_value=200, value=150, step=1)
+gender = st.sidebar.selectbox("Genre", options=["M", "F"])
+default_datetime = datetime.datetime(2023, 4, 1, 10, 0)
+selected_datetime = st.sidebar.date_input("Date de la séance", value=default_datetime.date(), min_value=None, max_value=None)
+selected_time = st.sidebar.time_input("Heure de la séance", value=default_datetime.time())
+timestamp = f'{selected_datetime} {selected_time}'
+
 CSS = """
 h1 {
     color: black;
@@ -95,17 +107,3 @@ with col2:
     with col6:
         st.image("https://media.licdn.com/dms/image/C4D03AQHZUfunPYygDQ/profile-displayphoto-shrink_400_400/0/1631292675152?e=1686182400&v=beta&t=i5SwZ0z7PpgDLOc-SzaNmOfkTYaICMblpj7fcFWg498", use_column_width=True)
         st.write("Benoit")
-
-
-st.sidebar.title("Options de course")
-
-# Créer les champs de saisie pour les informations de la séance de trail
-distance = st.sidebar.slider("Distance (km)", min_value=0.0, max_value=45.0, value=10.0, step=0.1)
-elevation_gain = st.sidebar.slider("Dénivelé positif total (m)", min_value=0, max_value=2000, value=200, step=10)
-average_heart_rate = st.sidebar.slider("Fréquence cardiaque moyenne (bpm)", min_value=100, max_value=200, value=150, step=1)
-gender = st.sidebar.selectbox("Genre", options=["M", "F"])
-
-
-default_datetime = datetime.datetime(2023, 4, 1, 10, 0)
-selected_datetime = st.sidebar.date_input("Date de la séance", value=default_datetime.date(), min_value=None, max_value=None)
-selected_time = st.sidebar.time_input("Heure de la séance", value=default_datetime.time())

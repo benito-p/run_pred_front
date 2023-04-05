@@ -156,28 +156,28 @@ with col2:
     col3, col4, col5, col6 = st.columns(4)
 
     with col3:
-        st.image("https://ca.slack-edge.com/T02NE0241-U04NG5700HW-494d59d5d15a-512",width=100)
+        st.image("https://ca.slack-edge.com/T02NE0241-U04NG5700HW-494d59d5d15a-512",use_column_width=True)
         st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#white;'>Simon </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
 
     with col4:
-        st.image("https://ca.slack-edge.com/T02NE0241-U04LX13GJET-195f2395ae0a-512", width=100)
+        st.image("https://ca.slack-edge.com/T02NE0241-U04LX13GJET-195f2395ae0a-512", use_column_width=True)
         st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#white;'>Thomas </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
 
     with col5:
-        st.image("https://ca.slack-edge.com/T02NE0241-U04M84VJQPQ-6f717977e3e8-512", width=100)
+        st.image("https://ca.slack-edge.com/T02NE0241-U04M84VJQPQ-6f717977e3e8-512", use_column_width=True)
         st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#white;'>Eryk </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
 
     with col6:
-        st.image("https://media.licdn.com/dms/image/C4D03AQHZUfunPYygDQ/profile-displayphoto-shrink_400_400/0/1631292675152?e=1686182400&v=beta&t=i5SwZ0z7PpgDLOc-SzaNmOfkTYaICMblpj7fcFWg498", width=100)
+        st.image("https://media.licdn.com/dms/image/C4D03AQHZUfunPYygDQ/profile-displayphoto-shrink_400_400/0/1631292675152?e=1686182400&v=beta&t=i5SwZ0z7PpgDLOc-SzaNmOfkTYaICMblpj7fcFWg498", use_column_width=True)
         st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#white;'>Benoit </h6>"
                 f"</div>",

@@ -7,9 +7,10 @@ import requests
 #text : '#343536'
 
 # Définit la configuration de la page avec l'image en fond d'écran
-st.set_page_config(page_title='Trail Predictor', page_icon='🏃‍♂️🏃‍♀️', layout='wide')
+st.set_page_config(page_title='Trail Predictor', page_icon='🏃‍♂️🏃‍♀️', layout='centered')
 
 #st.sidebar.title(':green[Données de course]')
+# Personnalise l'icône du bouton pour ouvrir/fermer la barre latérale
 
 ColorMinMax = st.markdown(''' <style> div.stSlider > div[data-baseweb = "slider"] > div[data-testid="stTickBar"] > div {
     background: rgb(1 1 1 / 0%); } </style>''', unsafe_allow_html = True)
@@ -61,7 +62,8 @@ st.markdown(f"<style>{CSS}</style>", unsafe_allow_html=True)
 # Définir le titre et la sous-titre de la page
 #st.title(':black[Estimez le temps de votre course/trail !]')
 st.write(f"<div>"
-                f"<h1 style='text-align: center; color : #ffffff; margin-top: -50px;'> Estimez le temps de votre course/trail ! </h1>"
+                f"<h1 style='text-align: center; color : #ffffff; margin-top: -50px;'> Estimez le temps </h1>"
+                f"<h1 style='text-align: center; color : #ffffff; margin-top: -15px;'> de votre course/trail ! </h1>"
                 f"</div>",
                 unsafe_allow_html=True,)
 # Diviser l'écran en deux colonnes
@@ -89,7 +91,7 @@ with col1:
 
         if gender == 'M':
             st.write(f"<div style='background-color :    #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color : #ffffff;'> Coureur débutant   🐭   : {results_dict.get('race_category_1_pred_time')} </h6>"
+                f"<h6 style= 'color : #ffffff; '> Coureur débutant   🐭   : {results_dict.get('race_category_1_pred_time')} </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
             st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
@@ -134,11 +136,20 @@ with col2:
                 f"</div>",
                 unsafe_allow_html=True
             )
-    st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h7 style= 'color :#ffffff;'>La méthodologie repose sur une estimation du temps de course par un modèle entrainé sur un dataset kaggle de différentes courses enregistrées dans la région de Pau https://www.kaggle.com/datasets/olegoaer/running-races-strava. </h7>"
-                f"</div>",
-                unsafe_allow_html=True
-            )
+
+    st.write("")
+
+    st.write("""
+    <div style='background-color: #78909c; padding: 5px; border-radius: 5px; text-align: center;'>
+        <h7 style='color: #ffffff;'>
+            La méthodologie repose sur une estimation du temps de course par un modèle entraîné sur un
+            <a href='https://www.kaggle.com/datasets/olegoaer/running-races-strava' target='_blank' style='color: white'>dataset Kaggle</a>
+            de différentes courses enregistrées dans la région de Pau.
+        </h7>
+    </div>
+    """, unsafe_allow_html=True)
+    #<a href='https://www.kaggle.com/datasets/olegoaer/running-races-strava' target='_blank' style='color: white'>dataset Kaggle</a>
+
 
 
     st.markdown("---")
@@ -147,6 +158,9 @@ with col2:
                 f"<h2 style= 'color :#ffffff;'>L'équipe </h2>"
                 f"</div>",
                 unsafe_allow_html=True)
+
+    st.write("")
+
     #st.write(f"<div style='background-color : #78909c ; padding: 5px; border-radius: 5px; text-align: center;'>"
                 #f"<h6 style= 'color :#white;'>Voici l'équipe qui a développé cette application : </h6>"
                 #f"</div>",
@@ -158,26 +172,34 @@ with col2:
         st.image("https://ca.slack-edge.com/T02NE0241-U04NG5700HW-494d59d5d15a-512",use_column_width=True)
         st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#ffffff;'>Simon </h6>"
+                f"<p><a href='https://www.linkedin.com/in/simonchartan/'><img src='https://cdn-icons-png.flaticon.com/512/174/174857.png' style='width:50px;height:50px;'></a></p>"
+                f"<p><a href='https://github.com/simonchartan-lewagon'><img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style='width:50px;height:50px;'></a></p>"
                 f"</div>",
                 unsafe_allow_html=True)
+        st.write("---",unsafe_allow_html=False)
 
     with col4:
         st.image("https://ca.slack-edge.com/T02NE0241-U04LX13GJET-195f2395ae0a-512", use_column_width=True)
         st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#ffffff;'>Thomas </h6>"
+                f"<p><a href='https://github.com/TomP81'><img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style='width:50px;height:50px;'></a></p>"
                 f"</div>",
                 unsafe_allow_html=True)
-
+        st.write("---",unsafe_allow_html=False)
     with col5:
         st.image("https://ca.slack-edge.com/T02NE0241-U04M84VJQPQ-6f717977e3e8-512", use_column_width=True)
         st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#ffffff;'>Eryk </h6>"
+                f"<p><a href='https://github.com/erkaminski'><img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style='width:50px;height:50px;'></a></p>"
                 f"</div>",
                 unsafe_allow_html=True)
-
+        st.write("---",unsafe_allow_html=False)
     with col6:
         st.image("https://media.licdn.com/dms/image/C4D03AQHZUfunPYygDQ/profile-displayphoto-shrink_400_400/0/1631292675152?e=1686182400&v=beta&t=i5SwZ0z7PpgDLOc-SzaNmOfkTYaICMblpj7fcFWg498", use_column_width=True)
         st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
                 f"<h6 style= 'color :#ffffff;'>Benoit </h6>"
+                f"<p><a href='https://www.linkedin.com/in/benoit-pype-2b649610/'><img src='https://cdn-icons-png.flaticon.com/512/174/174857.png' style='width:50px;height:50px;'></a></p>"
+                f"<p><a href='https://github.com/benito-p'><img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style='width:50px;height:50px;'></a></p>"
                 f"</div>",
                 unsafe_allow_html=True)
+        st.write("---",unsafe_allow_html=False)

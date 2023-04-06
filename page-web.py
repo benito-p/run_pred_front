@@ -9,14 +9,15 @@ import requests
 # Définit la configuration de la page avec l'image en fond d'écran
 st.set_page_config(page_title='Trail Predictor', page_icon='🏃‍♂️🏃‍♀️', layout='wide')
 
-st.sidebar.title(':orange[Données de course]')
+#st.sidebar.title(':green[Données de course]')
 
 ColorMinMax = st.markdown(''' <style> div.stSlider > div[data-baseweb = "slider"] > div[data-testid="stTickBar"] > div {
     background: rgb(1 1 1 / 0%); } </style>''', unsafe_allow_html = True)
 
 
 Slider_Cursor = st.markdown(''' <style> div.stSlider > div[data-baseweb="slider"] > div > div > div[role="slider"]{
-    background-color: #439c9a; box-shadow:  0px 0px 0px 0.2rem;} </style>''', unsafe_allow_html = True)
+    background-color: #439c9a; box-shadow:  0px 0px 0px 0.2rem;}
+    div.stSlider div[role="slider"] > div:last-child { color: #439c9a ; } </style>''', unsafe_allow_html = True)
 
 
 Slider_Number = st.markdown(''' <style> div.stSlider > div[data-baseweb="slider"] > div > div > div > div
@@ -29,11 +30,8 @@ col = f''' <style> div.stSlider > div[data-baseweb = "slider"] > div > div {{
 ColorSlider = st.markdown(col, unsafe_allow_html = True)
 
 
-
-
-
 # Créer les champs de saisie pour les informations de la séance de trail
-distance = st.sidebar.slider("Distance (km)", min_value=0.0, max_value=45.0, value=10.0, step=0.1)
+distance = st.sidebar.slider("Distance (km)", min_value=0.0, max_value=25.0, value=10.0, step=0.1)
 elevation_gain = st.sidebar.slider("Dénivelé positif total (m)", min_value=0, max_value=2000, value=200, step=10)
 average_heart_rate = st.sidebar.slider("Fréquence cardiaque moyenne (bpm)", min_value=100, max_value=200, value=150, step=1)
 gender = st.sidebar.selectbox("Genre", options=["M", "F"])
@@ -61,18 +59,19 @@ st.markdown(f"<style>{CSS}</style>", unsafe_allow_html=True)
 
 
 # Définir le titre et la sous-titre de la page
-st.title(':orange[Estimez le temps de votre prochain trail !]')
-
+#st.title(':black[Estimez le temps de votre course/trail !]')
+st.write(f"<div>"
+                f"<h1 style='text-align: center; color : #ffffff; margin-top: -50px;'> Estimez le temps de votre course/trail ! </h1>"
+                f"</div>",
+                unsafe_allow_html=True,)
 # Diviser l'écran en deux colonnes
 col1, col2 = st.columns(2)
-
-
-# Afficher l'encart de la méthodologie dans la colonne de gauche
-
+# Création d'un espace vide
+sidebar_location = st.empty()
 
 with col1:
     # Créer un bouton pour envoyer les informations à l'API
-    if st.button("**Prédire la durée de ma prochaine course/trail**"):
+    if st.sidebar.button("**Prédire mon temps de course**", type="secondary"):
         # Créer le dictionnaire avec les informations saisies
         params = {
             'distance_km': distance,
@@ -89,16 +88,16 @@ with col1:
         #st.markdown("**Résultats de la prédiction :**")
 
         if gender == 'M':
-            st.write(f"<div style='background-color :    #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color : #white;'> Coureur débutant   🐭   : {results_dict.get('race_category_1_pred_time')} </h6>"
+            st.write(f"<div style='background-color :    #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color : #ffffff;'> Coureur débutant   🐭   : {results_dict.get('race_category_1_pred_time')} </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
-            st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'> Coureur régulier   🐰   : {results_dict.get('race_category_2_pred_time')} </h6>"
+            st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'> Coureur régulier   🐰   : {results_dict.get('race_category_2_pred_time')} </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
-            st.write(f"<div style='background-color :    #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'> Coureur confirmé   🦊   : {results_dict.get('race_category_3_pred_time')} </h6>"
+            st.write(f"<div style='background-color :    #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'> Coureur confirmé   🦊   : {results_dict.get('race_category_3_pred_time')} </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
             # st.write('')
@@ -107,16 +106,16 @@ with col1:
             # st.write(f"- Coureur confirmé : ")
 
         else:
-            st.write(f"<div style='background-color :    #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'> Coureuse débutante   🐭   : {results_dict.get('race_category_1_pred_time')} </h6>"
+            st.write(f"<div style='background-color :    #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'> Coureuse débutante   🐭   : {results_dict.get('race_category_1_pred_time')} </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
-            st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'> Coureuse régulière   🐰   : {results_dict.get('race_category_2_pred_time')} </h6>"
+            st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'> Coureuse régulière   🐰   : {results_dict.get('race_category_2_pred_time')} </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
-            st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'> Coureuse confirmée   🦊   : {results_dict.get('race_category_3_pred_time')} </h6>"
+            st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'> Coureuse confirmée   🦊   : {results_dict.get('race_category_3_pred_time')} </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
             # st.write('')
@@ -130,13 +129,13 @@ with col1:
 
 # Afficher les encarts dans la deuxième colonne
 with col2:
-    st.markdown(f"<div style='background-color :  #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h2 style= 'color :#white;'>Méthodologie </h2>"
+    st.markdown(f"<div style='background-color :  #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h2 style= 'color :#ffffff;'>Méthodologie </h2>"
                 f"</div>",
                 unsafe_allow_html=True
             )
-    st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h7 style= 'color :#white;'>La méthodologie repose sur une estimation du temps de course par un modèle entrainé sur un dataset kaggle de différentes courses enregistrées dans la région de Pau https://www.kaggle.com/datasets/olegoaer/running-races-strava. </h7>"
+    st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h7 style= 'color :#ffffff;'>La méthodologie repose sur une estimation du temps de course par un modèle entrainé sur un dataset kaggle de différentes courses enregistrées dans la région de Pau https://www.kaggle.com/datasets/olegoaer/running-races-strava. </h7>"
                 f"</div>",
                 unsafe_allow_html=True
             )
@@ -144,41 +143,41 @@ with col2:
 
     st.markdown("---")
 
-    st.markdown(f"<div style='background-color :  #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h2 style= 'color :#white;'>L'équipe </h2>"
+    st.markdown(f"<div style='background-color :  #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h2 style= 'color :#ffffff;'>L'équipe </h2>"
                 f"</div>",
                 unsafe_allow_html=True)
-    st.write(f"<div style='background-color : #439c9a ; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'>Voici l'équipe qui a développé cette application : </h6>"
-                f"</div>",
-                unsafe_allow_html=True)
+    #st.write(f"<div style='background-color : #78909c ; padding: 5px; border-radius: 5px; text-align: center;'>"
+                #f"<h6 style= 'color :#white;'>Voici l'équipe qui a développé cette application : </h6>"
+                #f"</div>",
+                #unsafe_allow_html=True)
 
     col3, col4, col5, col6 = st.columns(4)
 
     with col3:
         st.image("https://ca.slack-edge.com/T02NE0241-U04NG5700HW-494d59d5d15a-512",use_column_width=True)
-        st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'>Simon </h6>"
+        st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'>Simon </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
 
     with col4:
         st.image("https://ca.slack-edge.com/T02NE0241-U04LX13GJET-195f2395ae0a-512", use_column_width=True)
-        st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'>Thomas </h6>"
+        st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'>Thomas </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
 
     with col5:
         st.image("https://ca.slack-edge.com/T02NE0241-U04M84VJQPQ-6f717977e3e8-512", use_column_width=True)
-        st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'>Eryk </h6>"
+        st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'>Eryk </h6>"
                 f"</div>",
                 unsafe_allow_html=True)
 
     with col6:
         st.image("https://media.licdn.com/dms/image/C4D03AQHZUfunPYygDQ/profile-displayphoto-shrink_400_400/0/1631292675152?e=1686182400&v=beta&t=i5SwZ0z7PpgDLOc-SzaNmOfkTYaICMblpj7fcFWg498", use_column_width=True)
-        st.write(f"<div style='background-color :   #439c9a; padding: 5px; border-radius: 5px; text-align: center;'>"
-                f"<h6 style= 'color :#white;'>Benoit </h6>"
+        st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
+                f"<h6 style= 'color :#ffffff;'>Benoit </h6>"
                 f"</div>",
                 unsafe_allow_html=True)

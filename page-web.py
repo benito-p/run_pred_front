@@ -178,6 +178,7 @@ with col4:
     st.image("https://ca.slack-edge.com/T02NE0241-U04LX13GJET-195f2395ae0a-512", use_column_width=True)
     st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
             f"<h6 style= 'color :#ffffff;'>Thomas PUECH</h6>"
+            f"<p><a href='https://www.linkedin.com/in/thomas-puech81/'><img src='https://cdn-icons-png.flaticon.com/512/174/174857.png' style='width:50px;height:50px;'></a></p>"
             f"<p><a href='https://github.com/TomP81'><img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style='width:50px;height:50px;'></a></p>"
             f"</div>",
             unsafe_allow_html=True)

@@ -192,7 +192,7 @@ with col5:
             unsafe_allow_html=True)
     st.write("---",unsafe_allow_html=False)
 with col6:
-    st.image("https://media.licdn.com/dms/image/C4D03AQHZUfunPYygDQ/profile-displayphoto-shrink_400_400/0/1631292675152?e=1686182400&v=beta&t=i5SwZ0z7PpgDLOc-SzaNmOfkTYaICMblpj7fcFWg498", use_column_width=True)
+    st.image("https://ca.slack-edge.com/T02NE0241-U04NBG3CWFJ-512537c5f757-512", use_column_width=True)
     st.write(f"<div style='background-color :   #78909c; padding: 5px; border-radius: 5px; text-align: center;'>"
             f"<h6 style= 'color :#ffffff;'>Benoit PYPE</h6>"
             f"<p><a href='https://www.linkedin.com/in/benoit-pype-2b649610/'><img src='https://cdn-icons-png.flaticon.com/512/174/174857.png' style='width:50px;height:50px;'></a></p>"
